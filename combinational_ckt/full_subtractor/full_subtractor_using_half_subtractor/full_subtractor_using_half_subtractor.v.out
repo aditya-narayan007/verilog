@@ -1,0 +1,61 @@
+#! /usr/bin/vvp
+:ivl_version "13.0 (stable)" "(v13_0)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "/usr/lib64/ivl/system.vpi";
+:vpi_module "/usr/lib64/ivl/vhdl_sys.vpi";
+:vpi_module "/usr/lib64/ivl/vhdl_textio.vpi";
+:vpi_module "/usr/lib64/ivl/v2005_math.vpi";
+:vpi_module "/usr/lib64/ivl/va_math.vpi";
+S_0x557b6413a040 .scope module, "full_subtractor" "full_subtractor" 2 8;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "x";
+    .port_info 1 /INPUT 1 "y";
+    .port_info 2 /INPUT 1 "z";
+    .port_info 3 /OUTPUT 1 "d";
+    .port_info 4 /OUTPUT 1 "c";
+L_0x557b6414d460 .functor OR 1, L_0x557b6414d020, L_0x557b6414d350, C4<0>, C4<0>;
+v0x557b6414c7b0_0 .net "c", 0 0, L_0x557b6414d460;  1 drivers
+v0x557b6414c890_0 .net "d", 0 0, L_0x557b6414d130;  1 drivers
+v0x557b6414c950_0 .net "w1", 0 0, L_0x557b6414d020;  1 drivers
+v0x557b6414ca50_0 .net "w2", 0 0, L_0x557b6414cea0;  1 drivers
+v0x557b6414cb40_0 .net "w3", 0 0, L_0x557b6414d350;  1 drivers
+o0x7fc43babc018 .functor BUFZ 1, c4<z>; HiZ drive
+v0x557b6414cc30_0 .net "x", 0 0, o0x7fc43babc018;  0 drivers
+o0x7fc43babc048 .functor BUFZ 1, c4<z>; HiZ drive
+v0x557b6414ccd0_0 .net "y", 0 0, o0x7fc43babc048;  0 drivers
+o0x7fc43babc1c8 .functor BUFZ 1, c4<z>; HiZ drive
+v0x557b6414cda0_0 .net "z", 0 0, o0x7fc43babc1c8;  0 drivers
+S_0x557b6413a280 .scope module, "hs1" "half_subtractor" 2 10, 2 1 0, S_0x557b6413a040;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "a";
+    .port_info 1 /INPUT 1 "b";
+    .port_info 2 /OUTPUT 1 "d";
+    .port_info 3 /OUTPUT 1 "c";
+L_0x557b6414cea0 .functor XOR 1, o0x7fc43babc018, o0x7fc43babc048, C4<0>, C4<0>;
+L_0x557b6414cfb0 .functor NOT 1, o0x7fc43babc018, C4<0>, C4<0>, C4<0>;
+L_0x557b6414d020 .functor AND 1, L_0x557b6414cfb0, o0x7fc43babc048, C4<1>, C4<1>;
+v0x557b64128930_0 .net "a", 0 0, o0x7fc43babc018;  alias, 0 drivers
+v0x557b6414bcb0_0 .net "b", 0 0, o0x7fc43babc048;  alias, 0 drivers
+v0x557b6414bd70_0 .net "c", 0 0, L_0x557b6414d020;  alias, 1 drivers
+v0x557b6414be40_0 .net "d", 0 0, L_0x557b6414cea0;  alias, 1 drivers
+v0x557b6414bf00_0 .net "w1", 0 0, L_0x557b6414cfb0;  1 drivers
+S_0x557b6414c090 .scope module, "hs2" "half_subtractor" 2 11, 2 1 0, S_0x557b6413a040;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "a";
+    .port_info 1 /INPUT 1 "b";
+    .port_info 2 /OUTPUT 1 "d";
+    .port_info 3 /OUTPUT 1 "c";
+L_0x557b6414d130 .functor XOR 1, L_0x557b6414cea0, o0x7fc43babc1c8, C4<0>, C4<0>;
+L_0x557b6414d2c0 .functor NOT 1, L_0x557b6414cea0, C4<0>, C4<0>, C4<0>;
+L_0x557b6414d350 .functor AND 1, L_0x557b6414d2c0, o0x7fc43babc1c8, C4<1>, C4<1>;
+v0x557b6414c320_0 .net "a", 0 0, L_0x557b6414cea0;  alias, 1 drivers
+v0x557b6414c3f0_0 .net "b", 0 0, o0x7fc43babc1c8;  alias, 0 drivers
+v0x557b6414c490_0 .net "c", 0 0, L_0x557b6414d350;  alias, 1 drivers
+v0x557b6414c560_0 .net "d", 0 0, L_0x557b6414d130;  alias, 1 drivers
+v0x557b6414c620_0 .net "w1", 0 0, L_0x557b6414d2c0;  1 drivers
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "full_subtractor_using_half_subtractor.v";
